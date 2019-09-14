@@ -27,6 +27,7 @@ const Bored = () => {
     if (activities.some(item => item.key === res.data.key)) {
       M.toast({ html: 'Nothing new to show' })
     } else if (res.data.error === undefined) {
+      M.toast({ html: 'Activity fetched!' })
       setActivities([...activities, res.data])
     } else if (res.data.error) {
       M.toast({ html: res.data.error })
