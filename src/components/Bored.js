@@ -32,9 +32,6 @@ const Bored = () => {
     } else if (res.data.error) {
       M.toast({ html: res.data.error })
     }
-
-    console.log(res.data)
-    console.log(activities)
   }
 
   const onClick = e => {
@@ -71,6 +68,15 @@ const Bored = () => {
 
     const form = document.querySelector('#activity-form')
     form.reset()
+    setActivities([])
+  }
+
+  const removeCard = key => {
+    // e.preventDefault()
+    const temp = [...activities]
+    const index = temp.findIndex(activity => activity.key === key)
+    temp.splice(index, 1)
+    setActivities(temp)
   }
 
   return (
@@ -157,7 +163,11 @@ const Bored = () => {
         {/* <h3>Bored</h3> */}
         <div className="grid-wrapper">
           {activities.map(activity => (
-            <BoredItem key={activity.key} activity={activity} />
+            <BoredItem
+              key={activity.key}
+              activity={activity}
+              removeCard={removeCard}
+            />
           ))}
         </div>
       </div>

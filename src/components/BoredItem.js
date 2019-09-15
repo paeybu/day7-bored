@@ -1,8 +1,14 @@
 import React from 'react'
 
-const BoredItem = ({ activity }) => {
+const BoredItem = ({ activity, removeCard }) => {
   return (
     <div className="card hoverable">
+      <i
+        className="material-icons close-icon"
+        onClick={() => removeCard(activity.key)}
+      >
+        close
+      </i>
       <div className="card-content">
         <h4>
           <blockquote>{activity.activity}</blockquote>
